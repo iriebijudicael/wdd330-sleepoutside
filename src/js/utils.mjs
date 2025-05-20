@@ -3,7 +3,7 @@ export function qs(selector, parent = document) {
   return parent.querySelector(selector);
 }
 // or a more concise version if you are into that sort of thing:
-export const qs = (selector, parent = document) => parent.querySelector(selector);
+// export const qs = (selector, parent = document) => parent.querySelector(selector);
 
 // retrieve data from localstorage
 export function getLocalStorage(key) {
@@ -22,16 +22,15 @@ export function setClick(selector, callback) {
   qs(selector).addEventListener("click", callback);
 }
 
+// get the product id from the query string
 export function getParam(param) {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const product = urlParams.get(param);
   return product
 }
- 
-// render a list of items using a template function
-export function renderListWithTemplate(
-  template, parentElement, list, position = "afterbegin", clear = false) {
+
+export function renderListWithTemplate(template, parentElement, list, position = "afterbegin", clear = false) {
   const htmlStrings = list.map(template);
   // if clear is true we need to clear out the contents of the parent.
   if (clear) {
@@ -39,5 +38,3 @@ export function renderListWithTemplate(
   }
   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
 }
-// Keep existing functions (like setLocalStorage) below
-
